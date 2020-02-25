@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Guess the number!</title>
+</head>
+<body>
+<h1>Guess the number!</h1>
+<h2>Enter the number</h2>
+<input type="number" name="figure" placeholder="Enter your number"id="number_input">
+<button onclick="generateRandomNumber()">Click me</button>
+<button onclick="reset()">Reset</button>
+<p id="grn_message"></p>
+<h2>lose: <span id="lose">0</span></h2>
+<h2>win: <span id="win">0</span></h2>
+
+
+
+<script type="text/javascript">
+
+	var randomNumber = Math.ceil(Math.random() * 100);
+	var guessCount = 5;
+	var userScore = 0;
+	var computerScore = 0;
+
+	function generateRandomNumber(){
+
+
+		var userNumber = document.getElementById ('number_input').value;
+
+		if (userNumber == randomNumber){
+			document.getElementById("grn_message").innerHTML = "Your guess is accurate! ("+userNumber +")"
+			userScore++;
+			alert("You win");
+
+		}
+		else if (userNumber > randomNumber){
+			document.getElementById("grn_message").innerHTML = "You're guessing too high  ("+userNumber +")" +"(" + guessCount +")" + (" guesses left")
+			guessCount--;
+		
+
+
+		}
+		else {
+			document.getElementById("grn_message").innerHTML = "You're guessing too low  ("+userNumber +")" +"(" + guessCount +")" + (" guesses left")
+			guessCount--;
+			//computerScore++;
+		
+		}
+		if (guessCount < 0){
+			document.getElementById("grn_message").innerHTML = "Game over. The number is ("+randomNumber+")"
+			computerScore++; 
+		}
+	document.getElementById("win").innerHTML = userScore;
+	document.getElementById("lose").innerHTML = computerScore;
+}
+    function reset(){
+    	randomNumber = Math.ceil(Math.random() * 100);
+    	guessCount = 5;
+    	document.getElementById("grn_message").innerHTML = ""
+    	document.getElementById("number_input").value = ""
+
+
+			
+
+
+
+
+
+		}
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>   
+
+
+
+
+</body>
+</html>
